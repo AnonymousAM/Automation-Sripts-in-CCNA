@@ -1,0 +1,48 @@
+netmiko and paramiko are the lib for ssh connections to devices
+netmiko is preffered one
+netmiko github
+-------------------------
+First SSH Script
+1.Make devices ready for SSH
+en
+conf t
+username samir password cisco
+username samir priv 15
+line vty 0 4
+	login local
+	transport input all
+ip domain-name devnet.com
+crypto key gen rsa
+1024
+
+2.Test from CentOS
+ssh samir@192.168.1.2
+
+3.Use netmiko lib in Script as follows,
+
+#!/usr/bin/env python
+
+from netmiko import ConnectHandler
+
+#dictionary
+
+ios_l2={
+	'device_type':'cisco_ios',
+	'ip':'192.168.60.170',
+	'username':'samir',
+	'password':'cisco'
+}
+
+net_connect=ConnectHandler(**ios_l2)
+output=net_connect.send_command('show ip int brief')
+print output
+
+config_command=['int loop 0','ip address 1.1.1.1 255.255.255.0']
+output=net_connect.set_config_set(config_command)
+print output
+
+for n in range(2,21):
+	print "Creating VLAN" +str(n)
+	config_command=['vlan '+str(n),name PYTHON_VLAN_'+str(n)]
+	output=net_connect.set_config_set(config_command)
+	print output

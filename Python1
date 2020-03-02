@@ -1,0 +1,95 @@
+Google Python Telnet
+
+https://docs.python.org/2/library/telnetlib.html
+
+Example Python Script
+
+import getpass
+import sys
+import telnetlib
+
+HOST = "localhost"
+user = raw_input("Enter your remote account: ")
+password = getpass.getpass()
+
+tn = telnetlib.Telnet(HOST)
+
+tn.read_until("login: ")
+tn.write(user + "\n")
+if password:
+    tn.read_until("Password: ")
+    tn.write(password + "\n")
+
+tn.write("ls\n")
+tn.write("exit\n")
+
+print tn.read_all()
+
+-------------------------
+
+Assign IP Address on R1 in UNL e.g. 192.168.60.145/24
+
+Check from R1 connectivity to outside network like Gateway & Automation VM
+(In our case CentOS)
+
+!
+host R1
+ip route 0.0.0.0 0.0.0.0 192.168.60.1
+ip domain-lookup
+ip name-server 8.8.8.8
+end
+!
+ping google.com
+!
+conf t
+!
+enable password cisco
+username samir password cisco
+line vty 0 4
+ login local
+ transport input all
+ end
+!
+------------------------
+Check Telnet from CentOS
+
+Before doing this we need to install telnet in CentOS
+
+yum install telnet
+
+Then we have to make required changes to script
+
+import getpass
+import sys
+import telnetlib
+
+HOST = "localhost" ==> HOST="192.168.60.160"
+user = raw_input("Enter your remote account: ") ==>
+user = raw_input("Enter your telnet username: ")
+password = getpass.getpass()
+
+tn = telnetlib.Telnet(HOST)
+
+tn.read_until("login: ")==>tn.read_until("Username: ")
+tn.write(user + "\n")
+if password:
+    tn.read_until("Password: ")
+    tn.write(password + "\n")
+
+tn.write("ls\n")==>tn.write("enable\n")
+tn.write("cisco\n")
+tn.write("conf t\n")
+tn.write("int loopback1\n")
+tn.write("ip add 1.1.1.1 255.0.0.0\n")
+tn.write("exit\n")
+
+print tn.read_all()
+
+----------------
+
+Start telnet debug on R1
+
+Add Loopback2
+
+Add ospf to it
+

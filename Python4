@@ -1,0 +1,108 @@
+Python
+------
+
+[root@localhost ~]# vim python-for-loop.py
+for n in range(2,101):
+ print ("vlan "+str(n))
+:wq
+[root@localhost ~]# python python-for-loop.py
+vlan 79
+vlan 80
+vlan 81
+vlan 82
+vlan 83
+vlan 84
+vlan 85
+vlan 86
+vlan 87
+vlan 88
+vlan 89
+vlan 90
+vlan 91
+vlan 92
+vlan 93
+vlan 94
+vlan 95
+vlan 96
+vlan 97
+vlan 98
+vlan 99
+vlan 100
+[root@localhost ~]# vim python-for-loop.py
+for n in range(2,101):
+ print ("Hello")
+ print ("vlan "+str(n))
+:wq
+[root@localhost ~]# python python-for-loop.py
+vlan 89
+Hello
+vlan 90
+Hello
+vlan 91
+Hello
+vlan 92
+Hello
+vlan 93
+Hello
+vlan 94
+Hello
+vlan 95
+Hello
+vlan 96
+Hello
+vlan 97
+Hello
+vlan 98
+Hello
+vlan 99
+Hello
+vlan 100
+[root@localhost ~]# vim python-for-loop.py
+for n in range(2,101):
+ print ("Hello")
+print ("vlan "+str(n))
+:wq
+[root@localhost ~]# python python-for-loop.py
+Hello
+Hello
+Hello
+Hello
+Hello
+Hello
+Hello
+Hello
+Hello
+Hello
+Hello
+Hello
+Hello
+Hello
+Hello
+Hello
+Hello
+Hello
+Hello
+Hello
+Hello
+Hello
+vlan 100
+[root@localhost ~]# vim python-for-loop.py
+for n in range(2,101):
+ print ("vlan"+str(n))
+:wq
+We have removed space,Previou Print Statement print ("vlan "+str(n))
+[root@localhost ~]# python python-for-loop.py
+vlan87
+vlan88
+vlan89
+vlan90
+vlan91
+vlan92
+vlan93
+vlan94
+vlan95
+vlan96
+vlan97
+vlan98
+vlan99
+vlan100

@@ -1,0 +1,34 @@
+
+Google Python Telnet
+
+https://docs.python.org/3.6/library/telnetlib.html
+
+but for 3.6 instead of 2.7
+
+import getpass
+import telnetlib
+
+HOST = "localhost"
+user = input("Enter your remote account: ")
+password = getpass.getpass()
+
+tn = telnetlib.Telnet(HOST)
+
+tn.read_until(b"login: ")
+tn.write(user.encode('ascii') + b"\n")
+if password:
+    tn.read_until(b"Password: ")
+    tn.write(password.encode('ascii') + b"\n")
+
+tn.write(b"ls\n")
+tn.write(b"exit\n")
+
+print(tn.read_all().decode('ascii'))
+----------------------
+
+Task:
+Make required changes,
+
+Router IP add
+Input
+Loopback script from previous example

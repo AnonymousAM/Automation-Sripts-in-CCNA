@@ -1,0 +1,62 @@
+Multiple Switches
+-----------------
+[root@localhost ~]# cat myswitches
+192.168.60.145
+192.168.60.146
+192.168.60.147
+192.168.60.148
+192.168.60.149
+[root@localhost ~]# cat multiple-sw.py
+
+f=open('myswitches')
+
+for ip in f:
+ print ('configuring switches '+(ip))
+
+[root@localhost ~]# python multiple-sw.py
+configuring switches 192.168.60.145
+
+configuring switches 192.168.60.146
+
+configuring switches 192.168.60.147
+
+configuring switches 192.168.60.148
+
+configuring switches 192.168.60.149
+
+-----------------------------
+
+Single quote or Double quote both accepted
+PEP8- style guide for python code
+
+import getpass
+import telnetlib
+
+user=input('Enter Your Telnet Username: ')
+password=getpass.getpass()
+
+f=open('Switch-List')
+
+for IP in f:
+	IP=IP.strip()
+	print ('Configuring Switch '+(IP))
+	HOST=IP
+	tn=telnetlib.Telnet(HOST)
+	tn.read_until(b'Username: ')
+	tn.write(user.encode('ascii')+b'\n')
+	if password:
+		tn.read_until(b'Password: ')
+		tn.write(password.encode('ascii')+b'\n')
+	tn.write(b'enable\n')
+	tn.write(b'cisco\n')
+	tn.write(b'conf t\n')
+	for n in range(2,101):
+		tn.write(b'vlan '+str(n).encode('ascii')+b'\n')
+		tn.write(b'name Python-VLAN-'+str(n).encode('ascii')+b'\n')
+	tn.write(b'end\n')
+	tn.write(b'exit\n')
+	
+--------------------------------------
+
+Task 
+ Remove enable password from script

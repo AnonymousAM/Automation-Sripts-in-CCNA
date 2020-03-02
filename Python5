@@ -1,0 +1,86 @@
+----------------------------
+Types
+----------------------------
+[root@localhost ~]# python3
+bash: python3: command not found...
+Similar command is: 'python'
+[root@localhost ~]# python3.6
+Python 3.6.5 (default, Feb  2 2020, 16:28:23)
+[GCC 4.8.5 20150623 (Red Hat 4.8.5-39)] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> type(1)
+<class 'int'>
+>>> type(100)
+<class 'int'>
+>>> type(1000)
+<class 'int'>
+>>> type(1.5)
+<class 'float'>
+>>> type(samir)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'samir' is not defined
+>>> type('samir')
+<class 'str'>
+>>> n=10
+>>> type(n)
+<class 'int'>
+>>> n=10.1
+>>> type(n)
+<class 'float'>
+>>> n=str(n)
+>>> type(n)
+<class 'str'>
+>>> n=n+1
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: must be str, not int
+>>> type(n)
+<class 'str'>
+>>> n=float(n)
+>>> n=n+1
+>>> n
+11.1
+>>> quit
+Use quit() or Ctrl-D (i.e. EOF) to exit
+>>> quit()
+[root@localhost ~]# vim python-for-loop.py
+for n in range(2,101):
+ print ("vlan"+n)
+[root@localhost ~]# python python-for-loop.py
+Traceback (most recent call last):
+  File "python-for-loop.py", line 2, in <module>
+    print ("vlan"+n)
+TypeError: cannot concatenate 'str' and 'int' objects
+[root@localhost ~]#
+
+Multiple Switches
+-----------------
+[root@localhost ~]# cat myswitches
+192.168.60.145
+192.168.60.146
+192.168.60.147
+192.168.60.148
+192.168.60.149
+[root@localhost ~]# cat multiple-sw.py
+
+f=open('myswitches')
+
+for ip in f:
+ print ('configuring switches '+(ip))
+
+[root@localhost ~]# python multiple-sw.py
+configuring switches 192.168.60.145
+
+configuring switches 192.168.60.146
+
+configuring switches 192.168.60.147
+
+configuring switches 192.168.60.148
+
+configuring switches 192.168.60.149
+
+-----------------------------
+
+Single quote or Double quote both accepted
+PEP8- style guide for python code

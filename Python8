@@ -1,0 +1,47 @@
+Python
+------
+(Python Programming for Network Engineer)
+
+virtualenv
+
+standard package manager is pip
+package that pip installs are in PyPI
+PyPI-Python Package Index
+
+source py3-venv/bin/activate
+
+(py3-venv) [root@localhost ~]# pip install requests
+Collecting requests
+  Downloading https://files.pythonhosted.org/packages/51/bd/23c926cd341ea6b7dd0b                                                                                        2a00aba99ae0f828be89d72b2190f27c11d4b7fb/requests-2.22.0-py2.py3-none-any.whl (5                                                                                        7kB)
+    100% |████████████████████████████████| 61kB 196kB/s
+Collecting idna<2.9,>=2.5 (from requests)
+  Downloading https://files.pythonhosted.org/packages/14/2c/cd551d81dbe15200be1c                                                                                        f41cd03869a46fe7226e7450af7a6545bfc474c9/idna-2.8-py2.py3-none-any.whl (58kB)
+    100% |████████████████████████████████| 61kB 401kB/s
+Collecting chardet<3.1.0,>=3.0.2 (from requests)
+  Downloading https://files.pythonhosted.org/packages/bc/a9/01ffebfb562e4274b648                                                                                        7b4bb1ddec7ca55ec7510b22e4c51f14098443b8/chardet-3.0.4-py2.py3-none-any.whl (133                                                                                        kB)
+    100% |████████████████████████████████| 143kB 735kB/s
+Collecting urllib3!=1.25.0,!=1.25.1,<1.26,>=1.21.1 (from requests)
+  Downloading https://files.pythonhosted.org/packages/e8/74/6e4f91745020f967d093                                                                                        32bb2b8b9b10090957334692eb88ea4afe91b77f/urllib3-1.25.8-py2.py3-none-any.whl (12                                                                                        5kB)
+    100% |████████████████████████████████| 133kB 1.8MB/s
+Collecting certifi>=2017.4.17 (from requests)
+  Downloading https://files.pythonhosted.org/packages/b9/63/df50cac98ea0d5b006c5                                                                                        5a399c3bf1db9da7b5a24de7890bc9cfd5dd9e99/certifi-2019.11.28-py2.py3-none-any.whl                                                                                         (156kB)
+    100% |████████████████████████████████| 163kB 1.8MB/s
+Installing collected packages: idna, chardet, urllib3, certifi, requests
+Successfully installed certifi-2019.11.28 chardet-3.0.4 idna-2.8 requests-2.22.0                                                                                         urllib3-1.25.8
+You are using pip version 9.0.3, however version 20.0.2 is available.
+You should consider upgrading via the 'pip install --upgrade pip' command.
+You have new mail in /var/spool/mail/root
+
+(py3-venv) [root@localhost ~]# python
+Python 3.6.5 (default, Feb  2 2020, 16:28:23)
+[GCC 4.8.5 20150623 (Red Hat 4.8.5-39)] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import requests
+>>> r=requests.get('http://www.google.com')                                                                                                                             >>> r
+<Response [200]>
+>>> dir(r)
+['__attrs__', '__bool__', '__class__', '__delattr__', '__dict__', '__dir__', '__                                                                                        doc__', '__enter__', '__eq__', '__exit__', '__format__', '__ge__', '__getattribu                                                                                        te__', '__getstate__', '__gt__', '__hash__', '__init__', '__init_subclass__', '_                                                                                        _iter__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__nonzero__',                                                                                         '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__setstate__', '__siz                                                                                        eof__', '__str__', '__subclasshook__', '__weakref__', '_content', '_content_cons                                                                                        umed', '_next', 'apparent_encoding', 'close', 'connection', 'content', 'cookies'                                                                                        , 'elapsed', 'encoding', 'headers', 'history', 'is_permanent_redirect', 'is_redi                                                                                        rect', 'iter_content', 'iter_lines', 'json', 'links', 'next', 'ok', 'raise_for_s                                                                                        tatus', 'raw', 'reason', 'request', 'status_code', 'text', 'url']
+>>>
+CTRL+D
+(py3-venv) [root@localhost ~]# deactivate
+[root@localhost ~]#
